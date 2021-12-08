@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Replicaset
+metadata:
+  name: simple-webapp
+  # Replica labels
+  labels:
+    app: App1
+    function: Front-end
+spec:
+  replicas: 3
+  # conenct Replicaset to PODS with selector, app: App1
+  selector:
+    matchLabels:
+      app: App1
+  template:
+    metadata:
+      # POD labels
+      labels:
+        app: App1
+        function: Front-end
+  spec:
+    containers:
+    - name: simple-webapp
+      image: simple-webapp
+   
