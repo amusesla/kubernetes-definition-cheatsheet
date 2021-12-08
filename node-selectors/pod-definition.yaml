@@ -1,0 +1,14 @@
+# command to assign node selector
+# kubectl label node <node-name> <label-key>=<label:value>
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-name
+spec:
+  containers:
+  - name: continaer-name
+    image: nginx
+
+  nodeSelector:
+    size: Large
