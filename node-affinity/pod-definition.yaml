@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app
+spec:
+  containers:
+  - name: conatianer-name
+    image: nginx
+  
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            # 1. POD could be placed in Large || medium
+            operator: In
+            values:
+            - Large
+            - Medium
+
+            # 2. POD: !small
+            operator: NotIn
+            values:
+            - Small
+
+            # 3. Just checking the 'key: size'
+            operator: Exists
