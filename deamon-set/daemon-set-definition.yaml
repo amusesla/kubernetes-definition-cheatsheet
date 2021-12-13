@@ -1,3 +1,7 @@
+# similar with replicaSet
+# to create daemon-set
+# kubectl create -f daemon-set-definition.yaml
+
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
