@@ -1,0 +1,25 @@
+# removed every other details
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-scheduler
+  namespace: kube-system
+spec:
+  containers:
+  # command section has a command to start the scheduler.
+  - command:
+    - kube-scheduler
+    - --address=127.0.0.1
+    - --kubeconfig=/etc/kubernetes/scheduler.config
+
+    # Important option for multiple 'Master Node'
+
+    - --leader-elect=true
+
+    # To set custom name for scheduler
+    # --scheduler-name=my-custom-scheduler
+    # ---END
+
+    image: k8s.gcr.io/kube-scheduler-adm64:v1.11.3
+    name: kube-scheduler
